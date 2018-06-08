@@ -92,7 +92,7 @@ public class RainbowData extends AbstractData<RainbowData, RainbowImmutableData>
     protected void registerGettersAndSetters() {
         registerFieldGetter(UNIQUE_ID_KEY, this::getUniqueId);
         registerFieldSetter(UNIQUE_ID_KEY, this::setUniqueId);
-        registerKeyValue(UNIQUE_ID_KEY, this::getUniqueIdValue);
+        registerKeyValue(UNIQUE_ID_KEY, this::uniqueId);
     }
     
     @Override
@@ -110,7 +110,7 @@ public class RainbowData extends AbstractData<RainbowData, RainbowImmutableData>
         this.uniqueId = uniqueId;
     }
     
-    private Value<UUID> getUniqueIdValue() {
+    private Value<UUID> uniqueId() {
         return Sponge.getRegistry().getValueFactory().createValue(UNIQUE_ID_KEY, getUniqueId());
     }
 }

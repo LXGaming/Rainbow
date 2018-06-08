@@ -44,7 +44,7 @@ public class RainbowImmutableData extends AbstractImmutableData<RainbowImmutable
     @Override
     protected void registerGetters() {
         registerFieldGetter(RainbowData.UNIQUE_ID_KEY, this::getUniqueId);
-        registerKeyValue(RainbowData.UNIQUE_ID_KEY, this::getUniqueIdValue);
+        registerKeyValue(RainbowData.UNIQUE_ID_KEY, this::uniqueId);
     }
     
     @Override
@@ -58,7 +58,7 @@ public class RainbowImmutableData extends AbstractImmutableData<RainbowImmutable
         return uniqueId;
     }
     
-    private ImmutableValue<UUID> getUniqueIdValue() {
+    private ImmutableValue<UUID> uniqueId() {
         return Sponge.getRegistry().getValueFactory().createValue(RainbowData.UNIQUE_ID_KEY, getUniqueId()).asImmutable();
     }
 }
