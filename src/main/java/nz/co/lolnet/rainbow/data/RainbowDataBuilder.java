@@ -45,7 +45,7 @@ public class RainbowDataBuilder extends AbstractDataBuilder<RainbowData> impleme
     }
     
     @Override
-    protected Optional<RainbowData> buildContent(DataView dataView) throws InvalidDataException {
-        return create().from(dataView.copy());
+    protected Optional<RainbowData> buildContent(DataView container) throws InvalidDataException {
+        return create().from(container.copy());
     }
 }

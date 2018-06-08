@@ -46,6 +46,14 @@ public class RainbowData extends AbstractData<RainbowData, RainbowImmutableData>
     
     public RainbowData(UUID uniqueId) {
         this.uniqueId = uniqueId;
+        registerGettersAndSetters();
+    }
+    
+    @Override
+    protected void registerGettersAndSetters() {
+        registerFieldGetter(UNIQUE_ID_KEY, this::getUniqueId);
+        registerFieldSetter(UNIQUE_ID_KEY, this::setUniqueId);
+        registerKeyValue(UNIQUE_ID_KEY, this::uniqueId);
     }
     
     @Override
@@ -86,13 +94,6 @@ public class RainbowData extends AbstractData<RainbowData, RainbowImmutableData>
     @Override
     public int getContentVersion() {
         return 1;
-    }
-    
-    @Override
-    protected void registerGettersAndSetters() {
-        registerFieldGetter(UNIQUE_ID_KEY, this::getUniqueId);
-        registerFieldSetter(UNIQUE_ID_KEY, this::setUniqueId);
-        registerKeyValue(UNIQUE_ID_KEY, this::uniqueId);
     }
     
     @Override
