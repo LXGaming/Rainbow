@@ -26,6 +26,8 @@ import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.item.ItemType;
 import org.spongepowered.api.item.ItemTypes;
 import org.spongepowered.api.item.inventory.ItemStack;
+import org.spongepowered.api.text.Text;
+import org.spongepowered.api.text.format.TextColors;
 import org.spongepowered.api.util.Color;
 
 import java.util.Optional;
@@ -39,6 +41,19 @@ public final class RainbowManager {
     
     public static ItemStack createItem(Player player, ItemType itemType) {
         ItemStack itemStack = ItemStack.of(itemType, 1);
+        itemStack.offer(Keys.HIDE_UNBREAKABLE, true);
+        itemStack.offer(Keys.UNBREAKABLE, true);
+        itemStack.offer(Keys.DISPLAY_NAME, Text.of(
+                TextColors.RED, "R",
+                TextColors.GOLD, "a",
+                TextColors.YELLOW, "i",
+                TextColors.GREEN, "n",
+                TextColors.AQUA, "b",
+                TextColors.BLUE, "o",
+                TextColors.DARK_PURPLE, "w")
+        );
+        
+        itemStack.offer(Keys.ITEM_LORE, Toolbox.newArrayList(Text.of(TextColors.GRAY, "Owner: ", TextColors.WHITE, player.getName())));
         itemStack.offer(new RainbowData(player.getUniqueId()));
         return itemStack;
     }
