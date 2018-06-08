@@ -30,6 +30,7 @@ import org.spongepowered.api.util.Color;
 
 import java.util.Optional;
 import java.util.Set;
+import java.util.UUID;
 
 public final class RainbowManager {
     
@@ -47,12 +48,12 @@ public final class RainbowManager {
             return;
         }
         
-        Optional<RainbowData> rainbowData = itemStack.get(RainbowData.class);
-        if (!rainbowData.isPresent()) {
+        Optional<UUID> uniqueId = itemStack.get(RainbowData.UNIQUE_ID_KEY);
+        if (!uniqueId.isPresent()) {
             return;
         }
         
-        if (!player.getUniqueId().equals(rainbowData.get().getUniqueId())) {
+        if (!player.getUniqueId().equals(uniqueId.get())) {
             resetItem(itemStack);
         }
         
