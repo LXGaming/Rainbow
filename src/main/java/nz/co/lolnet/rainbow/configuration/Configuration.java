@@ -50,8 +50,7 @@ public class Configuration {
             Rainbow.getInstance().getLogger().info("Successfully loaded configuration file.");
         } catch (IOException | ObjectMappingException | RuntimeException ex) {
             configurationNode = getConfigurationLoader().createEmptyNode(ConfigurationOptions.defaults());
-            Rainbow.getInstance().getLogger().error("Encountered an error processing {}::loadConfiguration", getClass().getSimpleName());
-            ex.printStackTrace();
+            Rainbow.getInstance().getLogger().error("Encountered an error processing {}::loadConfiguration", getClass().getSimpleName(), ex);
         }
     }
     
@@ -61,8 +60,7 @@ public class Configuration {
             getConfigurationLoader().save(getConfigurationNode());
             Rainbow.getInstance().getLogger().info("Successfully saved configuration file.");
         } catch (IOException | ObjectMappingException | RuntimeException ex) {
-            Rainbow.getInstance().getLogger().error("Encountered an error processing {}::saveConfiguration", getClass().getSimpleName());
-            ex.printStackTrace();
+            Rainbow.getInstance().getLogger().error("Encountered an error processing {}::saveConfiguration", getClass().getSimpleName(), ex);
         }
     }
     
