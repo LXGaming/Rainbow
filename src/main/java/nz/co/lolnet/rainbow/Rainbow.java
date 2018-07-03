@@ -17,7 +17,6 @@
 package nz.co.lolnet.rainbow;
 
 import com.google.inject.Inject;
-import ninja.leaping.configurate.objectmapping.GuiceObjectMapperFactory;
 import nz.co.lolnet.rainbow.commands.RainbowCommand;
 import nz.co.lolnet.rainbow.configuration.Config;
 import nz.co.lolnet.rainbow.configuration.Configuration;
@@ -63,9 +62,6 @@ public class Rainbow {
     @Inject
     @DefaultConfig(sharedRoot = true)
     private Path path;
-    
-    @Inject
-    private GuiceObjectMapperFactory factory;
     
     private Configuration configuration;
     
@@ -131,10 +127,6 @@ public class Rainbow {
     
     public Path getPath() {
         return path;
-    }
-    
-    public GuiceObjectMapperFactory getFactory() {
-        return factory;
     }
     
     public Configuration getConfiguration() {
