@@ -20,7 +20,7 @@ public class Reference {
     
     public static final String PLUGIN_ID = "rainbow";
     public static final String PLUGIN_NAME = "Rainbow";
-    public static final String PLUGIN_VERSION = "1.0.0";
+    public static final String PLUGIN_VERSION = "1.0.1";
     public static final String DESCRIPTION = "Wear the Rainbow";
     public static final String AUTHORS = "James137137, LX_Gaming";
     public static final String SOURCE = "https://github.com/lolnetnz/Rainbow/";

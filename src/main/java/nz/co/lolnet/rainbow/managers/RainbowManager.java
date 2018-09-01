@@ -29,6 +29,8 @@ import org.spongepowered.api.item.inventory.ItemStack;
 import org.spongepowered.api.text.Text;
 import org.spongepowered.api.text.format.TextColors;
 import org.spongepowered.api.util.Color;
+import org.spongepowered.common.data.util.NbtDataUtil;
+import org.spongepowered.common.item.inventory.util.ItemStackUtil;
 
 import java.util.Optional;
 import java.util.Set;
@@ -76,7 +78,8 @@ public final class RainbowManager {
         if (rainbowSpeed.isPresent() && rainbowSpeed.get() > 0.0F) {
             Color color = itemStack.get(Keys.COLOR).orElse(getDefaultColor());
             HSLColor hslColor = HSLColor.of(color.asJavaColor());
-            itemStack.offer(Keys.COLOR, Color.of(hslColor.getIncremented(rainbowSpeed.get())));
+            NbtDataUtil.setColorToNbt(ItemStackUtil.toNative(itemStack), Color.of(hslColor.getIncremented(rainbowSpeed.get())));
+            // itemStack.offer(Keys.COLOR, Color.of(hslColor.getIncremented(rainbowSpeed.get())));
         }
     }
     
@@ -85,7 +88,8 @@ public final class RainbowManager {
             return;
         }
         
-        itemStack.offer(Keys.COLOR, getDefaultColor());
+        NbtDataUtil.removeColorFromNBT(ItemStackUtil.toNative(itemStack));
+        // itemStack.offer(Keys.COLOR, getDefaultColor());
     }
     
     private static Optional<Float> getRainbowSpeed(Player player) {
