@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 lolnet.co.nz
+ * Copyright 2019 lolnet.co.nz
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package nz.co.lolnet.rainbow.commands;
+package nz.co.lolnet.rainbow.command;
 
-import nz.co.lolnet.rainbow.managers.CommandManager;
+import nz.co.lolnet.rainbow.manager.CommandManager;
 import nz.co.lolnet.rainbow.util.Reference;
 import nz.co.lolnet.rainbow.util.Toolbox;
 import org.apache.commons.lang3.StringUtils;
@@ -69,7 +69,7 @@ public abstract class AbstractCommand implements CommandCallable {
     
     @Override
     public final Optional<Text> getHelp(CommandSource commandSource) {
-        return Optional.of(Text.of(TextColors.BLUE, "Use ", TextColors.GREEN, "/", Reference.PLUGIN_ID, " help ", TextColors.BLUE, "to view available commands."));
+        return Optional.of(Text.of(TextColors.BLUE, "Use ", TextColors.GREEN, "/", Reference.ID, " help ", TextColors.BLUE, "to view available commands."));
     }
     
     @Override

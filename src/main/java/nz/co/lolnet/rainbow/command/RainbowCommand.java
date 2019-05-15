@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 lolnet.co.nz
+ * Copyright 2019 lolnet.co.nz
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,25 +14,27 @@
  * limitations under the License.
  */
 
-package nz.co.lolnet.rainbow.commands;
+package nz.co.lolnet.rainbow.command;
 
-import nz.co.lolnet.rainbow.util.Toolbox;
 import org.spongepowered.api.command.CommandResult;
 import org.spongepowered.api.command.CommandSource;
 
 import java.util.List;
 
-public class InfoCommand extends AbstractCommand {
+public class RainbowCommand extends AbstractCommand {
     
-    public InfoCommand() {
-        addAlias("info");
-        addAlias("information");
-        addAlias("version");
+    public RainbowCommand() {
+        addAlias("rainbow");
+        addChild(GiveCommand.class);
+        addChild(HelpCommand.class);
+        addChild(InfoCommand.class);
+        addChild(ReloadCommand.class);
+        addChild(ResetCommand.class);
     }
     
     @Override
     public CommandResult execute(CommandSource commandSource, List<String> arguments) {
-        commandSource.sendMessage(Toolbox.getPluginInformation());
+        getHelp(commandSource).ifPresent(commandSource::sendMessage);
         return CommandResult.success();
     }
 }

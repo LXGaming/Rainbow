@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 lolnet.co.nz
+ * Copyright 2019 lolnet.co.nz
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package nz.co.lolnet.rainbow.commands;
+package nz.co.lolnet.rainbow.command;
 
-import nz.co.lolnet.rainbow.managers.CommandManager;
+import nz.co.lolnet.rainbow.manager.CommandManager;
 import nz.co.lolnet.rainbow.util.Reference;
 import nz.co.lolnet.rainbow.util.Toolbox;
 import org.apache.commons.lang3.StringUtils;
@@ -38,7 +38,7 @@ public class HelpCommand extends AbstractCommand {
     
     @Override
     public CommandResult execute(CommandSource commandSource, List<String> arguments) {
-        Optional<AbstractCommand> abstractCommand = CommandManager.getCommand(Toolbox.newArrayList(Reference.PLUGIN_ID));
+        Optional<AbstractCommand> abstractCommand = CommandManager.getCommand(Toolbox.newArrayList(Reference.ID));
         if (!abstractCommand.isPresent()) {
             return CommandResult.success();
         }
@@ -50,10 +50,10 @@ public class HelpCommand extends AbstractCommand {
             }
             
             Text.Builder textBuilder = Text.builder();
-            textBuilder.onClick(TextActions.suggestCommand("/" + Reference.PLUGIN_ID + " " + command.getPrimaryAlias().orElse("unknown")));
+            textBuilder.onClick(TextActions.suggestCommand("/" + Reference.ID + " " + command.getPrimaryAlias().orElse("unknown")));
             textBuilder.onHover(TextActions.showText(buildDescription(command)));
             textBuilder.append(Text.of(TextColors.BLUE, "> "));
-            textBuilder.append(Text.of(TextColors.GREEN, "/", Reference.PLUGIN_ID, " ", command.getPrimaryAlias().orElse("unknown")));
+            textBuilder.append(Text.of(TextColors.GREEN, "/", Reference.ID, " ", command.getPrimaryAlias().orElse("unknown")));
             if (StringUtils.isNotBlank(command.getUsage())) {
                 textBuilder.append(Text.of(" ", TextColors.GREEN, command.getUsage()));
             }
@@ -70,7 +70,7 @@ public class HelpCommand extends AbstractCommand {
         textBuilder.append(Text.NEW_LINE);
         textBuilder.append(Text.of(TextColors.AQUA, "Description: ", TextColors.DARK_GREEN, StringUtils.defaultIfBlank(command.getDescription(), "No description provided")));
         textBuilder.append(Text.NEW_LINE);
-        textBuilder.append(Text.of(TextColors.AQUA, "Usage: ", TextColors.DARK_GREEN, "/", Reference.PLUGIN_ID, " ", command.getPrimaryAlias().orElse("unknown")));
+        textBuilder.append(Text.of(TextColors.AQUA, "Usage: ", TextColors.DARK_GREEN, "/", Reference.ID, " ", command.getPrimaryAlias().orElse("unknown")));
         if (StringUtils.isNotBlank(command.getUsage())) {
             textBuilder.append(Text.of(" ", TextColors.DARK_GREEN, command.getUsage()));
         }

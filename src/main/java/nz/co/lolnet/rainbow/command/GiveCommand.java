@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 lolnet.co.nz
+ * Copyright 2019 lolnet.co.nz
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package nz.co.lolnet.rainbow.commands;
+package nz.co.lolnet.rainbow.command;
 
-import nz.co.lolnet.rainbow.managers.RainbowManager;
+import nz.co.lolnet.rainbow.manager.RainbowManager;
 import nz.co.lolnet.rainbow.util.Toolbox;
 import org.spongepowered.api.Sponge;
 import org.spongepowered.api.command.CommandResult;

@@ -17,13 +17,13 @@
 package nz.co.lolnet.rainbow;
 
 import com.google.inject.Inject;
-import nz.co.lolnet.rainbow.commands.RainbowCommand;
+import nz.co.lolnet.rainbow.command.RainbowCommand;
 import nz.co.lolnet.rainbow.configuration.Config;
 import nz.co.lolnet.rainbow.configuration.Configuration;
 import nz.co.lolnet.rainbow.data.RainbowData;
 import nz.co.lolnet.rainbow.data.RainbowDataBuilder;
 import nz.co.lolnet.rainbow.data.RainbowImmutableData;
-import nz.co.lolnet.rainbow.managers.CommandManager;
+import nz.co.lolnet.rainbow.manager.CommandManager;
 import nz.co.lolnet.rainbow.util.Reference;
 import org.slf4j.Logger;
 import org.spongepowered.api.config.DefaultConfig;
@@ -42,9 +42,9 @@ import java.nio.file.Path;
 import java.util.Optional;
 
 @Plugin(
-        id = Reference.PLUGIN_ID,
-        name = Reference.PLUGIN_NAME,
-        version = Reference.PLUGIN_VERSION,
+        id = Reference.ID,
+        name = Reference.NAME,
+        version = Reference.VERSION,
         description = Reference.DESCRIPTION,
         authors = {Reference.AUTHORS},
         url = Reference.WEBSITE
