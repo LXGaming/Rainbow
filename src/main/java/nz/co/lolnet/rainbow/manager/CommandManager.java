@@ -16,6 +16,8 @@
 
 package nz.co.lolnet.rainbow.manager;
 
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 import nz.co.lolnet.rainbow.Rainbow;
 import nz.co.lolnet.rainbow.command.AbstractCommand;
 import nz.co.lolnet.rainbow.util.Toolbox;
@@ -32,11 +34,11 @@ import java.util.Set;
 
 public final class CommandManager {
     
-    private static final Set<AbstractCommand> COMMANDS = Toolbox.newLinkedHashSet();
-    private static final Set<Class<? extends AbstractCommand>> COMMAND_CLASSES = Toolbox.newLinkedHashSet();
+    private static final Set<AbstractCommand> COMMANDS = Sets.newLinkedHashSet();
+    private static final Set<Class<? extends AbstractCommand>> COMMAND_CLASSES = Sets.newLinkedHashSet();
     
     public static CommandResult process(AbstractCommand abstractCommand, CommandSource commandSource, String message) {
-        Optional<List<String>> arguments = getArguments(message).map(Toolbox::newArrayList);
+        Optional<List<String>> arguments = getArguments(message).map(Lists::newArrayList);
         if (!arguments.isPresent()) {
             commandSource.sendMessage(Text.of(Toolbox.getTextPrefix(), TextColors.RED, "Failed to collect arguments"));
             return CommandResult.empty();
@@ -114,7 +116,7 @@ public final class CommandManager {
     }
     
     private static Optional<AbstractCommand> getCommand(AbstractCommand parentCommand, List<String> arguments) {
-        Set<AbstractCommand> commands = Toolbox.newLinkedHashSet();
+        Set<AbstractCommand> commands = Sets.newLinkedHashSet();
         if (parentCommand != null) {
             commands.addAll(parentCommand.getChildren());
         } else {

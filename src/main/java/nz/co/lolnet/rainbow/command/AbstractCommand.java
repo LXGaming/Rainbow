@@ -16,9 +16,10 @@
 
 package nz.co.lolnet.rainbow.command;
 
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 import nz.co.lolnet.rainbow.manager.CommandManager;
 import nz.co.lolnet.rainbow.util.Reference;
-import nz.co.lolnet.rainbow.util.Toolbox;
 import org.apache.commons.lang3.StringUtils;
 import org.spongepowered.api.command.CommandCallable;
 import org.spongepowered.api.command.CommandException;
@@ -35,8 +36,8 @@ import java.util.Set;
 
 public abstract class AbstractCommand implements CommandCallable {
     
-    private final Set<String> aliases = Toolbox.newLinkedHashSet();
-    private final Set<AbstractCommand> children = Toolbox.newLinkedHashSet();
+    private final Set<String> aliases = Sets.newLinkedHashSet();
+    private final Set<AbstractCommand> children = Sets.newLinkedHashSet();
     private String description;
     private String permission;
     private String usage;
@@ -50,7 +51,7 @@ public abstract class AbstractCommand implements CommandCallable {
     
     @Override
     public final List<String> getSuggestions(CommandSource commandSource, String arguments, Location<World> targetPosition) throws CommandException {
-        return Toolbox.newArrayList();
+        return Lists.newArrayList();
     }
     
     @Override

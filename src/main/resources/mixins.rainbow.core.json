@@ -1,12 +1,14 @@
 {
   "required": true,
-  "minVersion": "0.7.4",
+  "minVersion": "0.7.10",
   "package": "nz.co.lolnet.rainbow.mixin.core",
   "refmap": "mixins.rainbow.refmap.json",
   "target": "@env(DEFAULT)",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "entity.player.MixinEntityPlayerMP"
+    "entity.player.MixinEntityPlayerMP",
+    "network.play.server.MixinSPacketEntityEquipment",
+    "network.play.server.MixinSPacketSetSlot"
   ],
   "injectors": {
     "defaultRequire": 1

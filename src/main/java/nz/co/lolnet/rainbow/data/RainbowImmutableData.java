@@ -19,6 +19,7 @@ package nz.co.lolnet.rainbow.data;
 import org.spongepowered.api.Sponge;
 import org.spongepowered.api.data.DataContainer;
 import org.spongepowered.api.data.manipulator.immutable.common.AbstractImmutableData;
+import org.spongepowered.api.data.value.immutable.ImmutableBoundedValue;
 import org.spongepowered.api.data.value.immutable.ImmutableValue;
 
 import java.util.UUID;
@@ -26,9 +27,11 @@ import java.util.UUID;
 public class RainbowImmutableData extends AbstractImmutableData<RainbowImmutableData, RainbowData> {
     
     private final UUID uniqueId;
+    private final float hue;
     
-    protected RainbowImmutableData(UUID uniqueId) {
+    RainbowImmutableData(UUID uniqueId, float hue) {
         this.uniqueId = uniqueId;
+        this.hue = hue;
         registerGetters();
     }
     
@@ -36,11 +39,14 @@ public class RainbowImmutableData extends AbstractImmutableData<RainbowImmutable
     protected void registerGetters() {
         registerFieldGetter(RainbowData.UNIQUE_ID_KEY, this::getUniqueId);
         registerKeyValue(RainbowData.UNIQUE_ID_KEY, this::uniqueId);
+        
+        registerFieldGetter(RainbowData.HUE_KEY, this::getHue);
+        registerKeyValue(RainbowData.HUE_KEY, this::hue);
     }
     
     @Override
     public RainbowData asMutable() {
-        return new RainbowData(getUniqueId());
+        return new RainbowData(getUniqueId(), getHue());
     }
     
     @Override
@@ -52,6 +58,7 @@ public class RainbowImmutableData extends AbstractImmutableData<RainbowImmutable
     public DataContainer toContainer() {
         DataContainer dataContainer = super.toContainer();
         dataContainer.set(RainbowData.UNIQUE_ID_KEY, getUniqueId());
+        dataContainer.set(RainbowData.HUE_KEY, getHue());
         return dataContainer;
     }
     
@@ -61,5 +68,18 @@ public class RainbowImmutableData extends AbstractImmutableData<RainbowImmutable
     
     private ImmutableValue<UUID> uniqueId() {
         return Sponge.getRegistry().getValueFactory().createValue(RainbowData.UNIQUE_ID_KEY, getUniqueId()).asImmutable();
+    }
+    
+    public float getHue() {
+        return hue;
+    }
+    
+    private ImmutableBoundedValue<Float> hue() {
+        return Sponge.getRegistry().getValueFactory().createBoundedValueBuilder(RainbowData.HUE_KEY)
+                .actualValue(getHue())
+                .defaultValue(0.0F)
+                .maximum(360.0F)
+                .minimum(0.0F)
+                .build().asImmutable();
     }
 }

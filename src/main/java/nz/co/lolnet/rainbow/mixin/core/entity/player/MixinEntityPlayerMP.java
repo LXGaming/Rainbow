@@ -37,9 +37,9 @@ public abstract class MixinEntityPlayerMP implements Player, IMixinSubject, IMix
             return;
         }
         
-        getHelmet().ifPresent(itemStack -> RainbowManager.updateItem(this, itemStack));
-        getChestplate().ifPresent(itemStack -> RainbowManager.updateItem(this, itemStack));
-        getLeggings().ifPresent(itemStack -> RainbowManager.updateItem(this, itemStack));
-        getBoots().ifPresent(itemStack -> RainbowManager.updateItem(this, itemStack));
+        getHelmet().ifPresent(itemStack -> RainbowManager.updateHue(this, itemStack));
+        getChestplate().ifPresent(itemStack -> RainbowManager.updateHue(this, itemStack));
+        getLeggings().ifPresent(itemStack -> RainbowManager.updateHue(this, itemStack));
+        getBoots().ifPresent(itemStack -> RainbowManager.updateHue(this, itemStack));
     }
 }

@@ -23,16 +23,13 @@ import org.spongepowered.api.text.action.TextAction;
 import org.spongepowered.api.text.action.TextActions;
 import org.spongepowered.api.text.format.TextColors;
 import org.spongepowered.api.text.format.TextStyles;
+import org.spongepowered.api.util.Color;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
 import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Toolbox {
     
@@ -87,6 +84,15 @@ public class Toolbox {
         return StringUtils.replaceAll(string, "[^\\x20-\\x7E\\x0A\\x0D]", "");
     }
     
+    // https://stackoverflow.com/questions/22973532/java-creating-a-discrete-rainbow-colour-array
+    public static Color HueToColor(float hue) {
+        return HSVToColor(hue, 1.0F, 1.0F);
+    }
+    
+    public static Color HSVToColor(float hue, float saturation, float brightness) {
+        return Color.of(java.awt.Color.getHSBColor(hue / 360, saturation, brightness));
+    }
+    
     public static Optional<Float> parseFloat(String string) {
         try {
             return Optional.of(Float.parseFloat(string));
@@ -109,26 +115,20 @@ public class Toolbox {
         return false;
     }
     
-    public static <T> Optional<T> newInstance(Class<? extends T> typeOfT) {
+    public static <T> T[] fillArray(T[] type, T defaultValue) {
+        Arrays.fill(type, defaultValue);
+        return type;
+    }
+    
+    public static <T> T cast(Object object, Class<? extends T> type) {
+        return type.cast(object);
+    }
+    
+    public static <T> Optional<T> newInstance(Class<? extends T> type) {
         try {
-            return Optional.of(typeOfT.newInstance());
-        } catch (Exception ex) {
+            return Optional.of(type.newInstance());
+        } catch (Throwable ex) {
             return Optional.empty();
         }
-    }
-    
-    @SafeVarargs
-    public static <E> ArrayList<E> newArrayList(E... elements) {
-        return Stream.of(elements).collect(Collectors.toCollection(ArrayList::new));
-    }
-    
-    @SafeVarargs
-    public static <E> HashSet<E> newHashSet(E... elements) {
-        return Stream.of(elements).collect(Collectors.toCollection(HashSet::new));
-    }
-    
-    @SafeVarargs
-    public static <E> LinkedHashSet<E> newLinkedHashSet(E... elements) {
-        return Stream.of(elements).collect(Collectors.toCollection(LinkedHashSet::new));
     }
 }

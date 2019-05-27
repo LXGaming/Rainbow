@@ -24,6 +24,7 @@ import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.text.Text;
 import org.spongepowered.api.text.format.TextColors;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class ResetCommand extends AbstractCommand {
@@ -41,10 +42,11 @@ public class ResetCommand extends AbstractCommand {
         }
         
         Player player = (Player) commandSource;
-        player.getHelmet().ifPresent(RainbowManager::resetItem);
-        player.getChestplate().ifPresent(RainbowManager::resetItem);
-        player.getLeggings().ifPresent(RainbowManager::resetItem);
-        player.getBoots().ifPresent(RainbowManager::resetItem);
+        RainbowManager.getTracking().computeIfPresent(player.getUniqueId(), (key, value) -> {
+            Arrays.fill(value, 0.0F);
+            return value;
+        });
+        
         player.sendMessage(Text.of(Toolbox.getTextPrefix(), TextColors.GREEN, "Rainbow Armor reset"));
         return CommandResult.success();
     }

@@ -23,9 +23,11 @@ import nz.co.lolnet.rainbow.configuration.Configuration;
 import nz.co.lolnet.rainbow.data.RainbowData;
 import nz.co.lolnet.rainbow.data.RainbowDataBuilder;
 import nz.co.lolnet.rainbow.data.RainbowImmutableData;
+import nz.co.lolnet.rainbow.listener.PlayerListener;
 import nz.co.lolnet.rainbow.manager.CommandManager;
 import nz.co.lolnet.rainbow.util.Reference;
 import org.slf4j.Logger;
+import org.spongepowered.api.Sponge;
 import org.spongepowered.api.config.DefaultConfig;
 import org.spongepowered.api.data.DataRegistration;
 import org.spongepowered.api.data.key.Key;
@@ -78,6 +80,7 @@ public class Rainbow {
     @Listener
     public void onGameInitialization(GameInitializationEvent event) {
         CommandManager.registerCommand(RainbowCommand.class);
+        Sponge.getEventManager().registerListeners(getInstance(), new PlayerListener());
     }
     
     @Listener
@@ -88,6 +91,7 @@ public class Rainbow {
     @Listener
     public void onKeyRegistration(GameRegistryEvent.Register<Key<?>> event) {
         event.register(RainbowData.UNIQUE_ID_KEY);
+        event.register(RainbowData.HUE_KEY);
     }
     
     @Listener
@@ -96,9 +100,9 @@ public class Rainbow {
                 .dataClass(RainbowData.class)
                 .immutableClass(RainbowImmutableData.class)
                 .builder(new RainbowDataBuilder())
-                .dataName("Rainbow Data")
-                .manipulatorId("rainbow")
-                .buildAndRegister(getPluginContainer());
+                .name("Rainbow Data")
+                .id("rainbow")
+                .build();
     }
     
     public boolean reloadConfiguration() {
