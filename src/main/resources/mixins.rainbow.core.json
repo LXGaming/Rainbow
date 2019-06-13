@@ -1,7 +1,7 @@
 {
   "required": true,
   "minVersion": "0.7.10",
-  "package": "nz.co.lolnet.rainbow.mixin.core",
+  "package": "io.github.lxgaming.rainbow.mixin.core",
   "refmap": "mixins.rainbow.refmap.json",
   "target": "@env(DEFAULT)",
   "compatibilityLevel": "JAVA_8",
