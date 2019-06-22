@@ -23,6 +23,6 @@ public class Reference {
     public static final String VERSION = "1.1.0";
     public static final String DESCRIPTION = "Wear the Rainbow";
     public static final String AUTHORS = "James137137, LX_Gaming";
-    public static final String SOURCE = "https://github.com/LXGaming/Rainbow/";
+    public static final String SOURCE = "https://github.com/LXGaming/Rainbow";
     public static final String WEBSITE = "https://lxgaming.github.io/";
 }
