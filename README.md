@@ -1,9 +1,6 @@
 # Rainbow
 
-[![Build Status](https://api.travis-ci.com/LXGaming/Rainbow.svg?branch=master)](https://travis-ci.com/LXGaming/Rainbow)
-[![License](https://lxgaming.github.io/badges/License-Apache%202.0-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
-[![Patreon](https://lxgaming.github.io/badges/Patreon-donate-yellow.svg)](https://www.patreon.com/lxgaming)
-[![Paypal](https://lxgaming.github.io/badges/Paypal-donate-yellow.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CZUUA6LE7YS44&item_name=Rainbow+(from+GitHub.com))
+[![License](https://img.shields.io/github/license/LXGaming/Rainbow?label=License&cacheSeconds=86400)](https://github.com/LXGaming/Rainbow/blob/master/LICENSE)
 
 ## License
-Rainbow is licensed under the [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0) license.
+Rainbow is licensed under the [Apache 2.0](https://github.com/LXGaming/Rainbow/blob/master/LICENSE) license.
